@@ -1,0 +1,91 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom Scrollbar Styles */
+@layer utilities {
+  /* Webkit Scrollbar */
+  .scrollbar-w-2::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  
+  .scrollbar-w-3::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+  }
+  
+  .scrollbar-track-gray-100::-webkit-scrollbar-track {
+    background-color: #f3f4f6;
+    border-radius: 3px;
+  }
+  
+  .scrollbar-track-gray-800::-webkit-scrollbar-track {
+    background-color: #1f2937;
+    border-radius: 3px;
+  }
+  
+  .scrollbar-thumb-gray-300::-webkit-scrollbar-thumb {
+    background-color: #d1d5db;
+    border-radius: 3px;
+  }
+  
+  .scrollbar-thumb-gray-400::-webkit-scrollbar-thumb {
+    background-color: #9ca3af;
+    border-radius: 3px;
+  }
+  
+  .scrollbar-thumb-gray-500::-webkit-scrollbar-thumb {
+    background-color: #6b7280;
+    border-radius: 3px;
+  }
+  
+  .scrollbar-thumb-gray-600::-webkit-scrollbar-thumb {
+    background-color: #4b5563;
+    border-radius: 3px;
+  }
+  
+  .hover\:scrollbar-thumb-gray-400:hover::-webkit-scrollbar-thumb {
+    background-color: #9ca3af;
+  }
+  
+  .hover\:scrollbar-thumb-gray-500:hover::-webkit-scrollbar-thumb {
+    background-color: #6b7280;
+  }
+  
+  /* Firefox Scrollbar */
+  .scrollbar-w-2 {
+    scrollbar-width: thin;
+  }
+  
+  .scrollbar-w-3 {
+    scrollbar-width: auto;
+  }
+  
+  .scrollbar-track-gray-100 {
+    scrollbar-color: #d1d5db #f3f4f6;
+  }
+  
+  .scrollbar-track-gray-800 {
+    scrollbar-color: #4b5563 #1f2937;
+  }
+}
+
+/* Smooth Scrolling */
+.scrollbar-w-2,
+.scrollbar-w-3 {
+  scroll-behavior: smooth;
+}
+
+/* Responsive scrollbar sizes */
+@media (max-width: 640px) {
+  .scrollbar-w-2::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  
+  .scrollbar-w-3::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+}

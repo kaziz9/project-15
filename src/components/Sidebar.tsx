@@ -347,6 +347,11 @@ export const Sidebar: React.FC<SidebarProps> = ({
           </div>
         </div>
 
+        {/* Separator Line */}
+        <div className={`border-t my-4 ${
+          darkMode ? 'border-gray-600' : 'border-gray-300'
+        }`}></div>
+
         {/* Popular Tags */}
         <div>
           <h3 className={`text-sm font-semibold mb-4 ${

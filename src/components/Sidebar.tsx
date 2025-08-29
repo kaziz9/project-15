@@ -167,7 +167,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
                     onClose();
                   }
                   // Close sidebar on mobile after selection
-                  if (window.innerWidth < 768) {
+                  {tags.map(tag => (
                     onClose();
                   }
                   // Close sidebar on mobile after selection
@@ -190,10 +190,6 @@ export const Sidebar: React.FC<SidebarProps> = ({
                   <span className="font-medium text-sm md:text-base">{item.label}</span>
                   {item.count !== null && item.count > 0 && (
                     <span className={`px-2 py-1 text-xs rounded-full ${
-                      item.id === 'trash'
-                        ? darkMode ? 'bg-red-900 text-red-200' : 'bg-red-100 text-red-800'
-                        : darkMode ? 'bg-gray-600 text-gray-300' : 'bg-gray-200 text-gray-700'
-                    }`}>
                       {item.count}
                     </span>
                   )}
@@ -387,9 +383,6 @@ export const Sidebar: React.FC<SidebarProps> = ({
                           ? 'bg-gray-700 text-gray-300 hover:bg-gray-600' 
                           : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
                     }`}
-                  >
-                    {tag}
-                  </button>
                 ))}
               </div>
             </div>

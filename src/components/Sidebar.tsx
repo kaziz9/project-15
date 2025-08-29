@@ -270,7 +270,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
           {/* Scrollable Folders Container */}
           <div className="relative">
             {/* Folders List with Scroll */}
-            <div className={`space-y-1 max-h-40 sm:max-h-48 md:max-h-56 overflow-y-auto ${
+            <div className={`space-y-1 max-h-44 overflow-y-auto ${
               darkMode 
                 ? 'scrollbar-w-2 scrollbar-track-gray-800 scrollbar-thumb-gray-600 hover:scrollbar-thumb-gray-500' 
                 : 'scrollbar-w-2 scrollbar-track-gray-100 scrollbar-thumb-gray-300 hover:scrollbar-thumb-gray-400'

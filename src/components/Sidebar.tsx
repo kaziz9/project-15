@@ -201,9 +201,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
 
         <div className="mb-6 md:mb-8">
           <div className="flex items-center justify-between mb-4">
-            <h3 className={\`text-sm font-semibold ${
-              darkMode ? 'text-gray-300' : 'text-gray-700'
-            }`}>
+            <h3 className={"text-sm font-semibold " + (darkMode ? 'text-gray-300' : 'text-gray-700')}>
               {t(language, 'folders')}
             </h3>
             <button

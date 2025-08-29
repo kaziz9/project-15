@@ -132,7 +132,7 @@ export const AboutModal: React.FC<AboutModalProps> = ({
             </div>
           </div>
 
-          {/* Footer */}
+          {/* Close Button */}
           <div className="text-center pt-4">
             <button
               onClick={onClose}

@@ -382,7 +382,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
                 : 'scrollbar-w-2 scrollbar-track-gray-100 scrollbar-thumb-gray-300 hover:scrollbar-thumb-gray-400'
             }`}>
               <div className="flex flex-wrap gap-1 sm:gap-1.5 md:gap-2 pb-2">
-                {tags.map(tag => (
+                {tags.slice(0, window.innerWidth < 640 ? 6 : undefined).map(tag => (
                   <button
                     key={tag}
                     onClick={() => {
@@ -409,10 +409,21 @@ export const Sidebar: React.FC<SidebarProps> = ({
                     {tag}
                   </button>
                 ))}
+                
+                {/* Show remaining tags count on small screens */}
+                {window.innerWidth < 640 && tags.length > 6 && (
+                  <span className={`px-2 py-1 text-xs rounded-full border border-dashed ${
+                    darkMode 
+                      ? 'border-gray-600 text-gray-400 bg-gray-800' 
+                      : 'border-gray-300 text-gray-500 bg-gray-50'
+                  }`}>
+                    +{tags.length - 6} {language === 'ar' ? 'المزيد' : 'more'}
+                  </span>
+                )}
               </div>
               
               {/* Show scroll indicator for tags */}
-              {tags.length > 4 && (
+              {tags.length > (window.innerWidth < 640 ? 6 : 8) && (
                 <div className={`text-center mt-2 ${
                   darkMode ? 'text-gray-400' : 'text-gray-500'
                 }`}>

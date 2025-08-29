@@ -740,7 +740,7 @@ function App() {
                   {currentView === 'trash' ? t(language, 'noItemsInTrash') : t(language, 'noLinks')}
                 </h3>
                 <p className={`text-sm md:text-base ${darkMode ? 'text-gray-500' : 'text-gray-500'}`}>
-                  {searchTerm ? t(language, 'noLinksFound') : t(language, 'startAddingLinks')}
+                  {searchTerm ? t(language, 'noLinksFound') : currentView === 'trash' ? '' : t(language, 'startAddingLinks')}
                 </p>
               </div>
             ) : (

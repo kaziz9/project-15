@@ -122,7 +122,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
       
       {/* Sidebar */}
       <div className={`
-        fixed md:relative top-14 sm:top-16 md:top-0 left-0 z-50 md:z-auto
+        fixed md:relative top-0 left-0 z-50 md:z-auto
         w-72 sm:w-80 md:w-64 h-full md:h-auto
         transform transition-transform duration-300 ease-in-out
         ${isOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'}

@@ -727,8 +727,12 @@ function App() {
 
             {filteredLinks.length === 0 ? (
               <div className="text-center py-12 md:py-16">
-                <div className={`text-6xl mb-4 ${darkMode ? 'text-gray-600' : 'text-gray-400'}`}>
-                  📚
+                <div className="mb-6">
+                  <img 
+                    src="/logo3.png" 
+                    alt="MyWaslat Logo" 
+                    className="w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 rounded-full object-cover border-4 border-blue-500 mx-auto shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 hover:rotate-12"
+                  />
                 </div>
                 <h3 className={`text-lg md:text-xl font-semibold mb-2 ${
                   darkMode ? 'text-gray-300' : 'text-gray-700'

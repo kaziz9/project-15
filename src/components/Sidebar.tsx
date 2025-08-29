@@ -307,6 +307,13 @@ export const Sidebar: React.FC<SidebarProps> = ({
               </div>
             ))}
             </div>
+            
+            {/* Show scroll indicator for folders */}
+            <div className={`text-center mt-2 ${
+              darkMode ? 'text-gray-400' : 'text-gray-500'
+            }`}>
+              <span className="text-xs">↕️ {language === 'ar' ? 'مرر لرؤية المزيد' : 'Scroll to see more'}</span>
+            </div>
           </div>
         </div>
 

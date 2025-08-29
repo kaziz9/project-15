@@ -737,7 +737,7 @@ function App() {
                 <h3 className={`text-lg md:text-xl font-semibold mb-2 ${
                   darkMode ? 'text-gray-300' : 'text-gray-700'
                 }`}>
-                  {t(language, 'noLinks')}
+                  {currentView === 'trash' ? t(language, 'noItemsInTrash') : t(language, 'noLinks')}
                 </h3>
                 <p className={`text-sm md:text-base ${darkMode ? 'text-gray-500' : 'text-gray-500'}`}>
                   {searchTerm ? t(language, 'noLinksFound') : t(language, 'startAddingLinks')}

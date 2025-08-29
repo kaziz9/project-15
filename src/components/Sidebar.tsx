@@ -275,40 +275,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
                 ? 'scrollbar-w-2 scrollbar-track-gray-800 scrollbar-thumb-gray-600 hover:scrollbar-thumb-gray-500' 
                 : 'scrollbar-w-2 scrollbar-track-gray-100 scrollbar-thumb-gray-300 hover:scrollbar-thumb-gray-400'
             }`}>
-            {/* Basic Folders (Always Visible) */}
-            {['Work', 'Study', 'Fun', 'Personal'].map((folder, index) => (
-              <div
-                key={folder}
-                className={`group flex items-center justify-between px-3 md:px-4 py-2.5 md:py-2 rounded-lg transition-all duration-200 ${
-                  currentView === `folder:${folder}`
-                    ? darkMode 
-                      ? 'bg-green-900 text-green-200' 
-                      : 'bg-green-100 text-green-900'
-                    : darkMode 
-                      ? 'text-gray-400 hover:bg-gray-700' 
-                      : 'text-gray-500 hover:bg-gray-50'
-                }`}
-              >
-                <button
-                  onClick={() => {
-                    onViewChange(`folder:${folder}`);
-                    // Close sidebar on mobile after selection
-                    if (window.innerWidth < 768) {
-                      onClose();
-                    }
-                  }}
-                  className="flex items-center space-x-3 flex-1 text-right"
-                >
-                  <Folder className="w-5 h-5 shrink-0" />
-                  <span className="font-medium text-sm">
-                    {t(language, folder.toLowerCase())}
-                  </span>
-                </button>
-              </div>
-            ))}
-            
-            {/* Custom Folders (Scrollable) */}
-            {folders.filter(folder => !['Work', 'Study', 'Fun', 'Personal'].includes(folder)).map((folder, index) => (
+            {folders.slice(0, window.innerWidth < 640 ? undefined : undefined).map((folder, index) => (
               <div
                 key={folder}
                 draggable={true}
@@ -318,11 +285,11 @@ export const Sidebar: React.FC<SidebarProps> = ({
                 onDragLeave={handleFolderDragLeave}
                 onDrop={(e) => handleFolderDrop(e, folder)}
                 className={`group flex items-center justify-between px-3 md:px-4 py-2.5 md:py-2 rounded-lg transition-all duration-200 cursor-move ${
-                  draggedIndex === (index + 4)
+                  draggedIndex === index 
                     ? 'opacity-50 scale-95 rotate-2' 
                     : ''
                 } ${
-                  dragOverIndex === (index + 4) && draggedIndex !== null && draggedIndex !== (index + 4)
+                  dragOverIndex === index && draggedIndex !== null && draggedIndex !== index
                     ? darkMode 
                       ? 'bg-blue-800/50 border-2 border-blue-500 border-dashed transform scale-105' 
                       : 'bg-blue-50 border-2 border-blue-300 border-dashed transform scale-105'
@@ -361,24 +328,29 @@ export const Sidebar: React.FC<SidebarProps> = ({
                 >
                   <Folder className="w-5 h-5 shrink-0" />
                   <span className="font-medium text-sm">
-                    {folder}
+                    {['Work', 'Study', 'Fun', 'Personal'].includes(folder) 
+                      ? t(language, folder.toLowerCase()) 
+                      : folder
+                    }
                   </span>
                 </button>
-                <button
-                  onClick={() => handleDeleteFolder(folder)}
-                  className={`opacity-0 group-hover:opacity-100 p-1 rounded transition-all duration-200 hover:scale-110 ${
-                    darkMode ? 'text-gray-500 hover:text-red-400' : 'text-gray-400 hover:text-red-600'
-                  }`}
-                  title={t(language, 'deleteFolder')}
-                >
-                  <X className="w-3 h-3" />
-                </button>
+                {!['Work', 'Study', 'Fun', 'Personal'].includes(folder) && (
+                  <button
+                    onClick={() => handleDeleteFolder(folder)}
+                    className={`opacity-0 group-hover:opacity-100 p-1 rounded transition-all duration-200 hover:scale-110 ${
+                      darkMode ? 'text-gray-500 hover:text-red-400' : 'text-gray-400 hover:text-red-600'
+                    }`}
+                    title={t(language, 'deleteFolder')}
+                  >
+                    <X className="w-3 h-3" />
+                  </button>
+                )}
               </div>
             ))}
             </div>
             
             {/* Show scroll indicator for folders on small screens */}
-            {folders.filter(folder => !['Work', 'Study', 'Fun', 'Personal'].includes(folder)).length > 0 && (
+            {folders.length > 4 && window.innerWidth < 640 && (
               <div className={`text-center mt-2 ${
                 darkMode ? 'text-gray-400' : 'text-gray-500'
               }`}>

@@ -82,7 +82,7 @@ export const loadSettings = (): DatabaseSettings => {
   try {
     const defaultSettings = {
       darkMode: false,
-      language: 'ar' as const,
+      language: 'en' as const,
       viewLayout: 'grid' as const,
       currentView: 'all'
     };
@@ -91,14 +91,14 @@ export const loadSettings = (): DatabaseSettings => {
     
     // Ensure language property exists for backward compatibility
     if (!settings.language) {
-      settings.language = 'ar';
+      settings.language = 'en';
     }
     return settings;
   } catch (error) {
     console.error('Error loading settings:', error);
     return {
       darkMode: false,
-      language: 'ar',
+      language: 'en',
       viewLayout: 'grid',
       currentView: 'all'
     };

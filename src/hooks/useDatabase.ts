@@ -42,7 +42,7 @@ export const useDatabase = () => {
         if (!currentSettings.language) {
           saveSettings({
             ...currentSettings,
-            language: 'ar'
+            language: 'en'
           });
         }
         

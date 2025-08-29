@@ -204,7 +204,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
         </nav>
 
         {/* Folders Section */}
-        <div className={`border-t mb-6 md:mb-8 ${
+        <div className={`border-t ${
           darkMode ? 'border-gray-600' : 'border-gray-300'
         }`}></div>
 
@@ -351,7 +351,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
           </div>
         </div>
 
-        <div className={`border-t mb-6 md:mb-8 ${
+        <div className={`border-t ${
           darkMode ? 'border-gray-600' : 'border-gray-300'
         }`}></div>
 

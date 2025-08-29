@@ -220,15 +220,15 @@ export const Sidebar: React.FC<SidebarProps> = ({
               onClick={() => setShowAddFolder(true)}
               className={`p-1 rounded-lg transition-colors hover:scale-110 ${
                 darkMode ? 'text-gray-400 hover:text-gray-200 hover:bg-gray-700' : 'text-gray-500 hover:text-gray-700 hover:bg-gray-100'
-              <div className={`max-h-32 overflow-y-auto ${
+              }`}
               title={t(language, 'addNewFolder')}
             >
               <Plus className="w-4 h-4" />
-                  ? 'scrollbar-w-3 scrollbar-track-gray-800 scrollbar-thumb-gray-600 hover:scrollbar-thumb-gray-500' 
-                  : 'scrollbar-w-3 scrollbar-track-gray-100 scrollbar-thumb-gray-500 hover:scrollbar-thumb-gray-600'
+            </button>
+          </div>
           
           {/* Add Folder Input */}
-                  {tags.map(tag => (
+          {showAddFolder && (
             <div className="mb-3 p-2 md:p-3 rounded-lg border border-dashed border-gray-300">
               <div className="flex flex-col space-y-2 md:flex-row md:space-y-0 md:space-x-2">
                 <input
@@ -251,6 +251,17 @@ export const Sidebar: React.FC<SidebarProps> = ({
                   >
                     {t(language, 'save')}
                   </button>
+                  <button
+                    onClick={() => {
+                      setShowAddFolder(false);
+                      setNewFolderName('');
+                    }}
+                    className={`flex-1 md:flex-none px-3 py-2 rounded text-sm transition-colors ${
+                      darkMode ? 'bg-gray-700 text-gray-300 hover:bg-gray-600' : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                    }`}
+                  >
+                    {t(language, 'cancel')}
+                  </button>
                 </div>
               </div>
             </div>
@@ -261,8 +272,8 @@ export const Sidebar: React.FC<SidebarProps> = ({
             {/* Folders List with Scroll */}
             <div className={`space-y-1 max-h-44 overflow-y-auto ${
               darkMode 
-                ? 'scrollbar-w-3 scrollbar-track-gray-800 scrollbar-thumb-gray-500 hover:scrollbar-thumb-gray-400' 
-                : 'scrollbar-w-3 scrollbar-track-gray-100 scrollbar-thumb-gray-400 hover:scrollbar-thumb-gray-500'
+                ? 'scrollbar-w-2 scrollbar-track-gray-800 scrollbar-thumb-gray-600 hover:scrollbar-thumb-gray-500' 
+                : 'scrollbar-w-2 scrollbar-track-gray-100 scrollbar-thumb-gray-300 hover:scrollbar-thumb-gray-400'
             }`}>
             {folders.map((folder, index) => (
               <div
@@ -337,6 +348,15 @@ export const Sidebar: React.FC<SidebarProps> = ({
               </div>
             ))}
             </div>
+            
+            {/* Show scroll indicator for folders on small screens */}
+            {folders.length > 4 && (
+              <div className={`text-center mt-2 ${
+                darkMode ? 'text-gray-400' : 'text-gray-500'
+              }`}>
+                <span className="text-xs">↕️ {language === 'ar' ? 'مرر لرؤية المزيد' : 'Scroll to see more'}</span>
+              </div>
+            )}
           </div>
         </div>
 
@@ -358,8 +378,8 @@ export const Sidebar: React.FC<SidebarProps> = ({
             {/* Tags List with Scroll */}
             <div className={`max-h-32 sm:max-h-36 md:max-h-40 lg:max-h-48 overflow-y-auto ${
               darkMode 
-                ? 'scrollbar-w-3 scrollbar-track-gray-800 scrollbar-thumb-gray-500 hover:scrollbar-thumb-gray-400' 
-                : 'scrollbar-w-3 scrollbar-track-gray-100 scrollbar-thumb-gray-400 hover:scrollbar-thumb-gray-500'
+                ? 'scrollbar-w-2 scrollbar-track-gray-800 scrollbar-thumb-gray-600 hover:scrollbar-thumb-gray-500' 
+                : 'scrollbar-w-2 scrollbar-track-gray-100 scrollbar-thumb-gray-300 hover:scrollbar-thumb-gray-400'
             }`}>
               <div className="flex flex-wrap gap-1 sm:gap-1.5 md:gap-2 pb-2">
                 {tags.slice(0, window.innerWidth < 640 ? 6 : undefined).map(tag => (
@@ -367,6 +387,10 @@ export const Sidebar: React.FC<SidebarProps> = ({
                     key={tag}
                     onClick={() => {
                       onViewChange(`tag:${tag}`);
+                      // Close sidebar on mobile after selection
+                      if (window.innerWidth < 768) {
+                        onClose();
+                      }
                       // Close sidebar on mobile after selection
                       if (window.innerWidth < 768) {
                         onClose();
@@ -397,6 +421,15 @@ export const Sidebar: React.FC<SidebarProps> = ({
                   </span>
                 )}
               </div>
+              
+              {/* Show scroll indicator for tags */}
+              {tags.length > (window.innerWidth < 640 ? 6 : 8) && (
+                <div className={`text-center mt-2 ${
+                  darkMode ? 'text-gray-400' : 'text-gray-500'
+                }`}>
+                  <span className="text-xs">↕️ {language === 'ar' ? 'مرر لرؤية المزيد' : 'Scroll to see more'}</span>
+                </div>
+              )}
             </div>
           </div>
         </div>

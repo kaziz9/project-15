@@ -270,12 +270,12 @@ export const Sidebar: React.FC<SidebarProps> = ({
           {/* Scrollable Folders Container */}
           <div className="relative">
             {/* Folders List with Scroll */}
-            <div className={`space-y-1 max-h-48 md:max-h-56 overflow-y-auto ${
+            <div className={`space-y-1 max-h-40 sm:max-h-48 md:max-h-56 overflow-y-auto ${
               darkMode 
                 ? 'scrollbar-w-2 scrollbar-track-gray-800 scrollbar-thumb-gray-600 hover:scrollbar-thumb-gray-500' 
                 : 'scrollbar-w-2 scrollbar-track-gray-100 scrollbar-thumb-gray-300 hover:scrollbar-thumb-gray-400'
             }`}>
-            {folders.map((folder, index) => (
+            {folders.slice(0, window.innerWidth < 640 ? undefined : undefined).map((folder, index) => (
               <div
                 key={folder}
                 draggable={true}
@@ -349,6 +349,14 @@ export const Sidebar: React.FC<SidebarProps> = ({
             ))}
             </div>
             
+            {/* Show scroll indicator for folders on small screens */}
+            {folders.length > 4 && window.innerWidth < 640 && (
+              <div className={`text-center mt-2 ${
+                darkMode ? 'text-gray-400' : 'text-gray-500'
+              }`}>
+                <span className="text-xs">↕️ {language === 'ar' ? 'مرر لرؤية المزيد' : 'Scroll to see more'}</span>
+              </div>
+            )}
           </div>
         </div>
 
@@ -368,13 +376,13 @@ export const Sidebar: React.FC<SidebarProps> = ({
           {/* Scrollable Tags Container */}
           <div className="relative">
             {/* Tags List with Scroll */}
-            <div className={`max-h-20 sm:max-h-24 md:max-h-32 lg:max-h-40 overflow-y-auto ${
+            <div className={`max-h-32 sm:max-h-36 md:max-h-40 lg:max-h-48 overflow-y-auto ${
               darkMode 
                 ? 'scrollbar-w-2 scrollbar-track-gray-800 scrollbar-thumb-gray-600 hover:scrollbar-thumb-gray-500' 
                 : 'scrollbar-w-2 scrollbar-track-gray-100 scrollbar-thumb-gray-300 hover:scrollbar-thumb-gray-400'
             }`}>
               <div className="flex flex-wrap gap-1 sm:gap-1.5 md:gap-2 pb-2">
-                {tags.slice(0, window.innerWidth < 640 ? 6 : window.innerWidth < 768 ? 8 : tags.length).map(tag => (
+                {tags.map(tag => (
                   <button
                     key={tag}
                     onClick={() => {
@@ -403,12 +411,12 @@ export const Sidebar: React.FC<SidebarProps> = ({
                 ))}
               </div>
               
-              {/* Show more indicator on small screens */}
-              {tags.length > 6 && window.innerWidth < 640 && (
+              {/* Show scroll indicator for tags */}
+              {tags.length > 4 && (
                 <div className={`text-center mt-2 ${
                   darkMode ? 'text-gray-400' : 'text-gray-500'
                 }`}>
-                  <span className="text-xs">+{tags.length - 6} {language === 'ar' ? 'وسم آخر' : 'more tags'}</span>
+                  <span className="text-xs">↕️ {language === 'ar' ? 'مرر لرؤية المزيد' : 'Scroll to see more'}</span>
                 </div>
               )}
             </div>

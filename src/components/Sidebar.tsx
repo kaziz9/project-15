@@ -275,7 +275,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
                 ? 'scrollbar-w-2 scrollbar-track-gray-800 scrollbar-thumb-gray-600 hover:scrollbar-thumb-gray-500' 
                 : 'scrollbar-w-2 scrollbar-track-gray-100 scrollbar-thumb-gray-300 hover:scrollbar-thumb-gray-400'
             }`}>
-            {folders.slice(0, window.innerWidth < 640 ? undefined : undefined).map((folder, index) => (
+            {folders.map((folder, index) => (
               <div
                 key={folder}
                 draggable={true}
@@ -350,7 +350,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
             </div>
             
             {/* Show scroll indicator for folders on small screens */}
-            {folders.length > 4 && window.innerWidth < 640 && (
+            {folders.length > 4 && (
               <div className={`text-center mt-2 ${
                 darkMode ? 'text-gray-400' : 'text-gray-500'
               }`}>

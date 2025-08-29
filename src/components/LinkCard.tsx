@@ -180,12 +180,12 @@ export const LinkCard: React.FC<LinkCardProps> = ({
               {/* Tags and Folder */}
               {!isTrashView && (
                 <div className="flex items-center space-x-1 sm:space-x-2 flex-wrap gap-1">
-                  <span className={`text-xs px-2 py-1 rounded-full ${
+                  <span className={`text-xs px-2 py-1 rounded-full border ${
                     link.folder === 'Work' 
-                      ? darkMode ? 'bg-green-900 text-green-200' : 'bg-green-100 text-green-800'
+                      ? darkMode ? 'bg-green-900 text-green-200 border-green-700' : 'bg-green-100 text-green-800 border-green-300'
                       : link.folder === 'Study'
-                      ? darkMode ? 'bg-purple-900 text-purple-200' : 'bg-purple-100 text-purple-800'
-                      : darkMode ? 'bg-orange-900 text-orange-200' : 'bg-orange-100 text-orange-800'
+                      ? darkMode ? 'bg-purple-900 text-purple-200 border-purple-700' : 'bg-purple-100 text-purple-800 border-purple-300'
+                      : darkMode ? 'bg-orange-900 text-orange-200 border-orange-700' : 'bg-orange-100 text-orange-800 border-orange-300'
                   }`}>
                     {['Work', 'Study', 'Fun', 'Personal'].includes(link.folder) 
                       ? t(language, link.folder.toLowerCase()) 
@@ -196,18 +196,18 @@ export const LinkCard: React.FC<LinkCardProps> = ({
                   {link.tags.slice(0, 1).map((tag) => (
                     <span
                       key={tag}
-                      className={`px-2 py-1 text-xs rounded-full ${
+                      className={`px-2 py-1 text-xs rounded-full border ${
                         darkMode 
-                          ? 'bg-blue-900 text-blue-200' 
-                          : 'bg-blue-100 text-blue-800'
+                          ? 'bg-blue-900 text-blue-200 border-blue-700' 
+                          : 'bg-blue-100 text-blue-800 border-blue-300'
                       }`}
                     >
                       {tag}
                     </span>
                   ))}
                   {link.tags.length > 1 && (
-                    <span className={`text-xs px-2 py-1 rounded-full ${
-                      darkMode ? 'bg-gray-700 text-gray-300' : 'bg-gray-100 text-gray-600'
+                    <span className={`text-xs px-2 py-1 rounded-full border ${
+                      darkMode ? 'bg-gray-700 text-gray-300 border-gray-600' : 'bg-gray-100 text-gray-600 border-gray-300'
                     }`}>
                       +{link.tags.length - 1}
                     </span>
@@ -388,12 +388,12 @@ export const LinkCard: React.FC<LinkCardProps> = ({
           {/* Folder */}
           <div className="flex items-center justify-between mt-1 sm:mt-2">
             {!isTrashView && (
-              <span className={`text-xs px-1.5 sm:px-2 py-0.5 sm:py-1 rounded-full ${
+              <span className={`text-xs px-1.5 sm:px-2 py-0.5 sm:py-1 rounded-full border ${
                 link.folder === 'Work' 
-                  ? darkMode ? 'bg-green-900 text-green-200' : 'bg-green-100 text-green-800'
+                  ? darkMode ? 'bg-green-900 text-green-200 border-green-700' : 'bg-green-100 text-green-800 border-green-300'
                   : link.folder === 'Study'
-                  ? darkMode ? 'bg-purple-900 text-purple-200' : 'bg-purple-100 text-purple-800'
-                  : darkMode ? 'bg-orange-900 text-orange-200' : 'bg-orange-100 text-orange-800'
+                  ? darkMode ? 'bg-purple-900 text-purple-200 border-purple-700' : 'bg-purple-100 text-purple-800 border-purple-300'
+                  : darkMode ? 'bg-orange-900 text-orange-200 border-orange-700' : 'bg-orange-100 text-orange-800 border-orange-300'
               }`}>
                 {['Work', 'Study', 'Fun', 'Personal'].includes(link.folder) 
                   ? t(language, link.folder.toLowerCase()) 
@@ -551,18 +551,18 @@ export const LinkCard: React.FC<LinkCardProps> = ({
             {link.tags.slice(0, 2).map((tag) => (
               <span
                 key={tag}
-                className={`px-1.5 sm:px-2 py-0.5 sm:py-1 text-xs rounded-full ${
+                className={`px-1.5 sm:px-2 py-0.5 sm:py-1 text-xs rounded-full border ${
                   darkMode 
-                    ? 'bg-blue-900 text-blue-200' 
-                    : 'bg-blue-100 text-blue-800'
+                    ? 'bg-blue-900 text-blue-200 border-blue-700' 
+                    : 'bg-blue-100 text-blue-800 border-blue-300'
                 }`}
               >
                 {tag}
               </span>
             ))}
             {link.tags.length > 2 && (
-              <span className={`px-1.5 sm:px-2 py-0.5 sm:py-1 text-xs rounded-full ${
-                darkMode ? 'bg-gray-700 text-gray-300' : 'bg-gray-100 text-gray-600'
+              <span className={`px-1.5 sm:px-2 py-0.5 sm:py-1 text-xs rounded-full border ${
+                darkMode ? 'bg-gray-700 text-gray-300 border-gray-600' : 'bg-gray-100 text-gray-600 border-gray-300'
               }`}>
                 +{link.tags.length - 2}
               </span>
@@ -599,12 +599,12 @@ export const LinkCard: React.FC<LinkCardProps> = ({
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-1">
             {!isTrashView && (
-              <span className={`text-xs px-1.5 sm:px-2 py-0.5 sm:py-1 rounded-full ${
+              <span className={`text-xs px-1.5 sm:px-2 py-0.5 sm:py-1 rounded-full border ${
                 link.folder === 'Work' 
-                  ? darkMode ? 'bg-green-900 text-green-200' : 'bg-green-100 text-green-800'
+                  ? darkMode ? 'bg-green-900 text-green-200 border-green-700' : 'bg-green-100 text-green-800 border-green-300'
                   : link.folder === 'Study'
-                  ? darkMode ? 'bg-purple-900 text-purple-200' : 'bg-purple-100 text-purple-800'
-                  : darkMode ? 'bg-orange-900 text-orange-200' : 'bg-orange-100 text-orange-800'
+                  ? darkMode ? 'bg-purple-900 text-purple-200 border-purple-700' : 'bg-purple-100 text-purple-800 border-purple-300'
+                  : darkMode ? 'bg-orange-900 text-orange-200 border-orange-700' : 'bg-orange-100 text-orange-800 border-orange-300'
               }`}>
                 {['Work', 'Study', 'Fun', 'Personal'].includes(link.folder) 
                   ? t(language, link.folder.toLowerCase()) 

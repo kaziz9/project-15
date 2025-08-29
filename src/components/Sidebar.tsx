@@ -166,6 +166,14 @@ export const Sidebar: React.FC<SidebarProps> = ({
                   if (window.innerWidth < 768) {
                     onClose();
                   }
+                  // Close sidebar on mobile after selection
+                  if (window.innerWidth < 768) {
+                    onClose();
+                  }
+                  // Close sidebar on mobile after selection
+                  if (window.innerWidth < 768) {
+                    onClose();
+                  }
                 }}
                 className={`w-full flex items-center space-x-3 px-3 md:px-4 py-3 rounded-lg text-right transition-all duration-200 ${
                   currentView === item.id
@@ -182,7 +190,9 @@ export const Sidebar: React.FC<SidebarProps> = ({
                   <span className="font-medium text-sm md:text-base">{item.label}</span>
                   {item.count !== null && item.count > 0 && (
                     <span className={`px-2 py-1 text-xs rounded-full ${
-                      darkMode ? 'bg-gray-600 text-gray-200' : 'bg-gray-200 text-gray-700'
+                      item.id === 'trash'
+                        ? darkMode ? 'bg-red-900 text-red-200' : 'bg-red-100 text-red-800'
+                        : darkMode ? 'bg-gray-600 text-gray-300' : 'bg-gray-200 text-gray-700'
                     }`}>
                       {item.count}
                     </span>
@@ -201,14 +211,14 @@ export const Sidebar: React.FC<SidebarProps> = ({
 
         <div className="mb-6 md:mb-8">
           <div className="flex items-center justify-between mb-4">
-            <h3 className={\`text-sm font-semibold ${
+            <h3 className={`text-sm font-semibold ${
               darkMode ? 'text-gray-300' : 'text-gray-700'
             }`}>
               {t(language, 'folders')}
             </h3>
             <button
               onClick={() => setShowAddFolder(true)}
-              className={\`p-1 rounded-lg transition-colors hover:scale-110 ${
+              className={`p-1 rounded-lg transition-colors hover:scale-110 ${
                 darkMode ? 'text-gray-400 hover:text-gray-200 hover:bg-gray-700' : 'text-gray-500 hover:text-gray-700 hover:bg-gray-100'
               }`}
               title={t(language, 'addNewFolder')}
@@ -227,7 +237,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
                   onChange={(e) => setNewFolderName(e.target.value)}
                   onKeyPress={(e) => e.key === 'Enter' && handleAddFolder()}
                   placeholder={t(language, 'newFolderPlaceholder')}
-                  className={\`flex-1 px-2 py-2 text-sm border rounded ${
+                  className={`flex-1 px-2 py-2 text-sm border rounded ${
                     darkMode 
                       ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400' 
                       : 'bg-white border-gray-300 text-gray-900 placeholder-gray-500'
@@ -255,7 +265,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
           {/* Scrollable Folders Container */}
           <div className="relative">
             {/* Folders List with Scroll */}
-            <div className={\`space-y-1 max-h-44 overflow-y-auto ${
+            <div className={`space-y-1 max-h-44 overflow-y-auto ${
               darkMode 
                 ? 'scrollbar-w-3 scrollbar-track-gray-800 scrollbar-thumb-gray-500 hover:scrollbar-thumb-gray-400' 
                 : 'scrollbar-w-3 scrollbar-track-gray-100 scrollbar-thumb-gray-400 hover:scrollbar-thumb-gray-500'
@@ -269,7 +279,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
                 onDragOver={(e) => handleFolderDragOver(e, folder)}
                 onDragLeave={handleFolderDragLeave}
                 onDrop={(e) => handleFolderDrop(e, folder)}
-                className={\`group flex items-center justify-between px-3 md:px-4 py-2.5 md:py-2 rounded-lg transition-all duration-200 cursor-move ${
+                className={`group flex items-center justify-between px-3 md:px-4 py-2.5 md:py-2 rounded-lg transition-all duration-200 cursor-move ${
                   draggedIndex === index 
                     ? 'opacity-50 scale-95 rotate-2' 
                     : ''
@@ -290,7 +300,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
                 }`}
               >
                 {/* Drag Handle */}
-                <div className={\`flex items-center mr-2 opacity-0 group-hover:opacity-100 transition-opacity ${
+                <div className={`flex items-center mr-2 opacity-0 group-hover:opacity-100 transition-opacity ${
                   darkMode ? 'text-gray-500' : 'text-gray-400'
                 }`}>
                   <div className="flex flex-col space-y-0.5">
@@ -303,7 +313,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
                 
                 <button
                   onClick={() => {
-                    onViewChange(\`folder:${folder}`);
+                    onViewChange(`folder:${folder}`);
                     // Close sidebar on mobile after selection
                     if (window.innerWidth < 768) {
                       onClose();
@@ -322,7 +332,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
                 {!['Work', 'Study', 'Fun', 'Personal'].includes(folder) && (
                   <button
                     onClick={() => handleDeleteFolder(folder)}
-                    className={\`opacity-0 group-hover:opacity-100 p-1 rounded transition-all duration-200 hover:scale-110 ${
+                    className={`opacity-0 group-hover:opacity-100 p-1 rounded transition-all duration-200 hover:scale-110 ${
                       darkMode ? 'text-gray-500 hover:text-red-400' : 'text-gray-400 hover:text-red-600'
                     }`}
                     title={t(language, 'deleteFolder')}
@@ -337,13 +347,13 @@ export const Sidebar: React.FC<SidebarProps> = ({
         </div>
 
         {/* Separator Line */}
-        <div className={\`border-t my-4 ${
+        <div className={`border-t my-4 ${
           darkMode ? 'border-gray-600' : 'border-gray-300'
         }`}></div>
 
         {/* Popular Tags */}
         <div className="block">
-          <h3 className={\`text-sm font-semibold mb-4 ${
+          <h3 className={`text-sm font-semibold mb-4 ${
             darkMode ? 'text-gray-300' : 'text-gray-700'
           }`}>
             {t(language, 'popularTags')}
@@ -352,7 +362,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
           {/* Scrollable Tags Container */}
           <div className="relative">
             {/* Tags List with Scroll */}
-            <div className={\`max-h-32 overflow-y-auto ${
+            <div className={`max-h-32 overflow-y-auto ${
               darkMode 
                 ? 'scrollbar-w-3 scrollbar-track-gray-800 scrollbar-thumb-gray-600 hover:scrollbar-thumb-gray-500' 
                 : 'scrollbar-w-3 scrollbar-track-gray-100 scrollbar-thumb-gray-500 hover:scrollbar-thumb-gray-600'
@@ -362,13 +372,13 @@ export const Sidebar: React.FC<SidebarProps> = ({
                   <button
                     key={tag}
                     onClick={() => {
-                      onViewChange(\`tag:${tag}`);
+                      onViewChange(`tag:${tag}`);
                       // Close sidebar on mobile after selection
                       if (window.innerWidth < 768) {
                         onClose();
                       }
                     }}
-                    className={\`px-2 sm:px-2.5 md:px-3 py-1 sm:py-1.5 md:py-1 text-xs rounded-full transition-all duration-200 hover:scale-105 ${
+                    className={`px-2 sm:px-2.5 md:px-3 py-1 sm:py-1.5 md:py-1 text-xs rounded-full transition-all duration-200 hover:scale-105 ${
                       currentView === `tag:${tag}`
                         ? darkMode 
                           ? 'bg-purple-900 text-purple-200' 

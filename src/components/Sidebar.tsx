@@ -358,7 +358,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
         }`}></div>
 
         {/* Popular Tags */}
-        <div>
+        <div className="block">
           <h3 className={`text-sm font-semibold mb-4 ${
             darkMode ? 'text-gray-300' : 'text-gray-700'
           }`}>
@@ -368,13 +368,13 @@ export const Sidebar: React.FC<SidebarProps> = ({
           {/* Scrollable Tags Container */}
           <div className="relative">
             {/* Tags List with Scroll */}
-            <div className={`max-h-32 md:max-h-40 overflow-y-auto ${
+            <div className={`max-h-20 sm:max-h-24 md:max-h-32 lg:max-h-40 overflow-y-auto ${
               darkMode 
                 ? 'scrollbar-w-2 scrollbar-track-gray-800 scrollbar-thumb-gray-600 hover:scrollbar-thumb-gray-500' 
                 : 'scrollbar-w-2 scrollbar-track-gray-100 scrollbar-thumb-gray-300 hover:scrollbar-thumb-gray-400'
             }`}>
-              <div className="flex flex-wrap gap-1.5 md:gap-2 pb-2">
-                {tags.map(tag => (
+              <div className="flex flex-wrap gap-1 sm:gap-1.5 md:gap-2 pb-2">
+                {tags.slice(0, window.innerWidth < 640 ? 6 : window.innerWidth < 768 ? 8 : tags.length).map(tag => (
                   <button
                     key={tag}
                     onClick={() => {
@@ -388,7 +388,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
                         onClose();
                       }
                     }}
-                    className={`px-2.5 md:px-3 py-1.5 md:py-1 text-xs rounded-full transition-all duration-200 hover:scale-105 ${
+                    className={`px-2 sm:px-2.5 md:px-3 py-1 sm:py-1.5 md:py-1 text-xs rounded-full transition-all duration-200 hover:scale-105 ${
                       currentView === `tag:${tag}`
                         ? darkMode 
                           ? 'bg-purple-900 text-purple-200' 
@@ -402,6 +402,15 @@ export const Sidebar: React.FC<SidebarProps> = ({
                   </button>
                 ))}
               </div>
+              
+              {/* Show more indicator on small screens */}
+              {tags.length > 6 && window.innerWidth < 640 && (
+                <div className={`text-center mt-2 ${
+                  darkMode ? 'text-gray-400' : 'text-gray-500'
+                }`}>
+                  <span className="text-xs">+{tags.length - 6} {language === 'ar' ? 'وسم آخر' : 'more tags'}</span>
+                </div>
+              )}
             </div>
           </div>
         </div>

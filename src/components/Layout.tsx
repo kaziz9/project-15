@@ -30,7 +30,7 @@ export function Layout({
   children
 }: LayoutProps) {
   return (
-    <div className={`min-h-screen transition-colors duration-200 ${
+    <div className={`h-screen overflow-hidden transition-colors duration-200 ${
       darkMode ? 'bg-gray-900' : 'bg-gray-50'
     }`}>
       {/* Header */}

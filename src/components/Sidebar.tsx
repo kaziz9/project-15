@@ -368,52 +368,38 @@ export const Sidebar: React.FC<SidebarProps> = ({
           {/* Scrollable Tags Container */}
           <div className="relative">
             {/* Tags List with Scroll */}
-            <div className={`max-h-32 sm:max-h-36 md:max-h-40 lg:max-h-48 overflow-y-auto ${
+            <div className={`space-y-1 max-h-44 overflow-y-auto ${
               darkMode 
                 ? 'scrollbar-w-2 scrollbar-track-gray-800 scrollbar-thumb-gray-600 hover:scrollbar-thumb-gray-500' 
                 : 'scrollbar-w-2 scrollbar-track-gray-100 scrollbar-thumb-gray-300 hover:scrollbar-thumb-gray-400'
             }`}>
-              <div className="flex flex-wrap gap-1 sm:gap-1.5 md:gap-2 pb-2">
-                {tags.slice(0, window.innerWidth < 640 ? 6 : undefined).map(tag => (
-                  <button
-                    key={tag}
-                    onClick={() => {
-                      onViewChange(`tag:${tag}`);
-                      // Close sidebar on mobile after selection
-                      if (window.innerWidth < 768) {
-                        onClose();
-                      }
-                      // Close sidebar on mobile after selection
-                      if (window.innerWidth < 768) {
-                        onClose();
-                      }
-                    }}
-                    className={`px-2 sm:px-2.5 md:px-3 py-1 sm:py-1.5 md:py-1 text-xs rounded-full transition-all duration-200 hover:scale-105 ${
-                      currentView === `tag:${tag}`
-                        ? darkMode 
-                          ? 'bg-purple-900 text-purple-200' 
-                          : 'bg-purple-100 text-purple-900'
-                        : darkMode 
-                          ? 'bg-gray-700 text-gray-300 hover:bg-gray-600' 
-                          : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
-                    }`}
-                  >
-                    {tag}
-                  </button>
-                ))}
-                
-                {/* Show remaining tags count on small screens */}
-                {window.innerWidth < 640 && tags.length > 6 && (
-                  <span className={`px-2 py-1 text-xs rounded-full border border-dashed ${
-                    darkMode 
-                      ? 'border-gray-600 text-gray-400 bg-gray-800' 
-                      : 'border-gray-300 text-gray-500 bg-gray-50'
-                  }`}>
-                    +{tags.length - 6} {language === 'ar' ? 'المزيد' : 'more'}
-                  </span>
-                )}
-              </div>
-              
+              {tags.map(tag => (
+                <button
+                  key={tag}
+                  onClick={() => {
+                    onViewChange(`tag:${tag}`);
+                    // Close sidebar on mobile after selection
+                    if (window.innerWidth < 768) {
+                      onClose();
+                    }
+                  }}
+                  className={`w-full flex items-center justify-between px-3 md:px-4 py-2.5 md:py-2 rounded-lg transition-all duration-200 ${
+                    currentView === `tag:${tag}`
+                      ? darkMode 
+                        ? 'bg-purple-900 text-purple-200' 
+                        : 'bg-purple-100 text-purple-900'
+                      : darkMode 
+                        ? 'text-gray-400 hover:bg-gray-700' 
+                        : 'text-gray-500 hover:bg-gray-50'
+                  }`}
+                >
+                  <div className="flex items-center space-x-3 flex-1 text-right">
+                    <span className="font-medium text-sm">
+                      {tag}
+                    </span>
+                  </div>
+                </button>
+              ))}
             </div>
           </div>
         </div>

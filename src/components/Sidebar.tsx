@@ -365,44 +365,49 @@ export const Sidebar: React.FC<SidebarProps> = ({
             {t(language, 'popularTags')}
           </h3>
           
-          {/* Scrollable Tags Container */}
-          <div className="relative">
-            {/* Tags List with Scroll */}
-            <div className={`max-h-32 md:max-h-40 overflow-y-auto ${
-              darkMode 
-                ? 'scrollbar-w-2 scrollbar-track-gray-800 scrollbar-thumb-gray-600 hover:scrollbar-thumb-gray-500' 
-                : 'scrollbar-w-2 scrollbar-track-gray-100 scrollbar-thumb-gray-300 hover:scrollbar-thumb-gray-400'
-            }`}>
-              <div className="flex flex-wrap gap-1.5 md:gap-2 pb-2">
-                {tags.map(tag => (
-                  <button
-                    key={tag}
-                    onClick={() => {
-                      onViewChange(`tag:${tag}`);
-                      // Close sidebar on mobile after selection
-                      if (window.innerWidth < 768) {
-                        onClose();
-                      }
-                      // Close sidebar on mobile after selection
-                      if (window.innerWidth < 768) {
-                        onClose();
-                      }
-                    }}
-                    className={`px-2.5 md:px-3 py-1.5 md:py-1 text-xs rounded-full transition-all duration-200 hover:scale-105 ${
-                      currentView === `tag:${tag}`
-                        ? darkMode 
-                          ? 'bg-purple-900 text-purple-200' 
-                          : 'bg-purple-100 text-purple-900'
-                        : darkMode 
-                          ? 'bg-gray-700 text-gray-300 hover:bg-gray-600' 
-                          : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
-                    }`}
-                  >
-                    {tag}
-                  </button>
-                ))}
+          {/* Tags Container - Always visible with better scroll */}
+          <div className="space-y-2">
+            {tags.length > 0 ? (
+              <div className={`max-h-40 sm:max-h-48 md:max-h-56 overflow-y-auto ${
+                darkMode 
+                  ? 'scrollbar-w-2 scrollbar-track-gray-800 scrollbar-thumb-gray-600 hover:scrollbar-thumb-gray-500' 
+                  : 'scrollbar-w-2 scrollbar-track-gray-100 scrollbar-thumb-gray-300 hover:scrollbar-thumb-gray-400'
+              }`}>
+                <div className="flex flex-wrap gap-1.5 md:gap-2 pb-2">
+                  {tags.map(tag => (
+                    <button
+                      key={tag}
+                      onClick={() => {
+                        onViewChange(`tag:${tag}`);
+                        // Close sidebar on mobile after selection
+                        if (window.innerWidth < 768) {
+                          onClose();
+                        }
+                      }}
+                      className={`px-2.5 md:px-3 py-1.5 md:py-1 text-xs rounded-full transition-all duration-200 hover:scale-105 ${
+                        currentView === `tag:${tag}`
+                          ? darkMode 
+                            ? 'bg-purple-900 text-purple-200' 
+                            : 'bg-purple-100 text-purple-900'
+                          : darkMode 
+                            ? 'bg-gray-700 text-gray-300 hover:bg-gray-600' 
+                            : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                      }`}
+                    >
+                      {tag}
+                    </button>
+                  ))}
+                </div>
               </div>
-            </div>
+            ) : (
+              <div className={`text-center py-4 ${
+                darkMode ? 'text-gray-500' : 'text-gray-400'
+              }`}>
+                <p className="text-xs">
+                  {t(language, 'noTagsYet')}
+                </p>
+              </div>
+            )}
           </div>
         </div>
       </div>

@@ -174,7 +174,6 @@ export const translations = {
     reorderFolders: 'إعادة ترتيب المجلدات',
     dragToReorder: 'اسحب لإعادة الترتيب',
     folderReordered: 'تم إعادة ترتيب المجلدات'
-    noTagsYet: 'لا توجد وسوم بعد'
   },
   en: {
     // Header
@@ -372,7 +371,6 @@ export const translations = {
     reorderFolders: 'Reorder Folders',
     dragToReorder: 'Drag to reorder',
     folderReordered: 'Folders reordered'
-    noTagsYet: 'No tags yet'
   }
 };
 

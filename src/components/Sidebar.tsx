@@ -306,7 +306,85 @@ export const Sidebar: React.FC<SidebarProps> = ({
                 </button>
               </div>
             ))}
+            
+            {/* Custom Folders (Scrollable) */}
+            {folders.filter(folder => !['Work', 'Study', 'Fun', 'Personal'].includes(folder)).map((folder, index) => (
+              <div
+                key={folder}
+                draggable={true}
+                onDragStart={(e) => handleDragStart(e, folder)}
+                onDragEnd={handleDragEnd}
+                onDragOver={(e) => handleFolderDragOver(e, folder)}
+                onDragLeave={handleFolderDragLeave}
+                onDrop={(e) => handleFolderDrop(e, folder)}
+                className={`group flex items-center justify-between px-3 md:px-4 py-2.5 md:py-2 rounded-lg transition-all duration-200 cursor-move ${
+                  draggedIndex === (index + 4)
+                    ? 'opacity-50 scale-95 rotate-2' 
+                    : ''
+                } ${
+                  dragOverIndex === (index + 4) && draggedIndex !== null && draggedIndex !== (index + 4)
+                    ? darkMode 
+                      ? 'bg-blue-800/50 border-2 border-blue-500 border-dashed transform scale-105' 
+                      : 'bg-blue-50 border-2 border-blue-300 border-dashed transform scale-105'
+                    : ''
+                } ${
+                  currentView === `folder:${folder}`
+                    ? darkMode 
+                      ? 'bg-green-900 text-green-200' 
+                      : 'bg-green-100 text-green-900'
+                    : darkMode 
+                      ? 'text-gray-400 hover:bg-gray-700' 
+                      : 'text-gray-500 hover:bg-gray-50'
+                }`}
+              >
+                {/* Drag Handle */}
+                <div className={`flex items-center mr-2 opacity-0 group-hover:opacity-100 transition-opacity ${
+                  darkMode ? 'text-gray-500' : 'text-gray-400'
+                }`}>
+                  <div className="flex flex-col space-y-0.5">
+                    <div className="w-1 h-1 bg-current rounded-full"></div>
+                    <div className="w-1 h-1 bg-current rounded-full"></div>
+                    <div className="w-1 h-1 bg-current rounded-full"></div>
+                    <div className="w-1 h-1 bg-current rounded-full"></div>
+                  </div>
+                </div>
+                
+                <button
+                  onClick={() => {
+                    onViewChange(`folder:${folder}`);
+                    // Close sidebar on mobile after selection
+                    if (window.innerWidth < 768) {
+                      onClose();
+                    }
+                  }}
+                  className="flex items-center space-x-3 flex-1 text-right"
+                >
+                  <Folder className="w-5 h-5 shrink-0" />
+                  <span className="font-medium text-sm">
+                    {folder}
+                  </span>
+                </button>
+                <button
+                  onClick={() => handleDeleteFolder(folder)}
+                  className={`opacity-0 group-hover:opacity-100 p-1 rounded transition-all duration-200 hover:scale-110 ${
+                    darkMode ? 'text-gray-500 hover:text-red-400' : 'text-gray-400 hover:text-red-600'
+                  }`}
+                  title={t(language, 'deleteFolder')}
+                >
+                  <X className="w-3 h-3" />
+                </button>
+              </div>
+            ))}
             </div>
+            
+            {/* Show scroll indicator for folders on small screens */}
+            {folders.filter(folder => !['Work', 'Study', 'Fun', 'Personal'].includes(folder)).length > 0 && (
+              <div className={`text-center mt-2 ${
+                darkMode ? 'text-gray-400' : 'text-gray-500'
+              }`}>
+                <span className="text-xs">↕️ {language === 'ar' ? 'مرر لرؤية المزيد' : 'Scroll to see more'}</span>
+              </div>
+            )}
           </div>
         </div>
 

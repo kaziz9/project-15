@@ -533,8 +533,8 @@ function App() {
           onOpenAbout={() => setIsAboutModalOpen(true)}
         />
 
-        <div className="flex-1 overflow-auto w-full md:w-auto">
-          <div className="p-3 sm:p-4 md:p-6 lg:p-8">
+        <div className="flex-1 overflow-hidden w-full md:w-auto">
+          <div className="p-3 sm:p-4 md:p-6 lg:p-8 h-full overflow-y-auto">
             <div className="flex items-center justify-between mb-8">
               <div>
                 <h1 className={`text-lg sm:text-xl md:text-2xl font-bold mb-1 md:mb-2 ${

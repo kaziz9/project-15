@@ -204,6 +204,11 @@ export const Sidebar: React.FC<SidebarProps> = ({
         </nav>
 
         {/* Folders Section */}
+        {/* Separator Line */}
+        <div className={`border-t my-4 ${
+          darkMode ? 'border-gray-600' : 'border-gray-300'
+        }`}></div>
+
         <div className="mb-6 md:mb-8">
           <div className="flex items-center justify-between mb-4">
             <h3 className={`text-sm font-semibold ${

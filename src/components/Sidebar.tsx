@@ -204,11 +204,11 @@ export const Sidebar: React.FC<SidebarProps> = ({
         </nav>
 
         {/* Folders Section */}
-        <div className={`border-t ${
+        <div className={`border-t mb-6 md:mb-8 ${
           darkMode ? 'border-gray-600' : 'border-gray-300'
         }`}></div>
 
-        <div className="mb-6 md:mb-8">
+        <div>
           <div className="flex items-center justify-between mb-4">
             <h3 className={`text-sm font-semibold ${
               darkMode ? 'text-gray-300' : 'text-gray-700'
@@ -351,12 +351,12 @@ export const Sidebar: React.FC<SidebarProps> = ({
           </div>
         </div>
 
-        <div className={`border-t ${
+        <div className={`border-t mb-6 md:mb-8 ${
           darkMode ? 'border-gray-600' : 'border-gray-300'
         }`}></div>
 
         {/* Popular Tags */}
-        <div className="block">
+        <div>
           <h3 className={`text-sm font-semibold mb-4 ${
             darkMode ? 'text-gray-300' : 'text-gray-700'
           }`}>

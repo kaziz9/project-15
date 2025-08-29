@@ -349,14 +349,6 @@ export const Sidebar: React.FC<SidebarProps> = ({
             ))}
             </div>
             
-            {/* Show scroll indicator for folders on small screens */}
-            {folders.length > 4 && (
-              <div className={`text-center mt-2 ${
-                darkMode ? 'text-gray-400' : 'text-gray-500'
-              }`}>
-                <span className="text-xs">↕️ {language === 'ar' ? 'مرر لرؤية المزيد' : 'Scroll to see more'}</span>
-              </div>
-            )}
           </div>
         </div>
 
@@ -422,14 +414,6 @@ export const Sidebar: React.FC<SidebarProps> = ({
                 )}
               </div>
               
-              {/* Show scroll indicator for tags */}
-              {tags.length > (window.innerWidth < 640 ? 6 : 8) && (
-                <div className={`text-center mt-2 ${
-                  darkMode ? 'text-gray-400' : 'text-gray-500'
-                }`}>
-                  <span className="text-xs">↕️ {language === 'ar' ? 'مرر لرؤية المزيد' : 'Scroll to see more'}</span>
-                </div>
-              )}
             </div>
           </div>
         </div>

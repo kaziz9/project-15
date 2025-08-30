@@ -229,7 +229,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
           {/* Add Folder Input */}
           {showAddFolder && (
             <div className="mb-3 p-2 md:p-3 rounded-lg border border-dashed border-gray-300">
-              <div className="flex flex-col space-y-2 md:flex-row md:space-y-0 md:space-x-2">
+              <div className="flex space-x-2">
                 <input
                   type="text"
                   value={newFolderName}
@@ -243,25 +243,23 @@ export const Sidebar: React.FC<SidebarProps> = ({
                   }`}
                   autoFocus
                 />
-                <div className="flex space-x-2">
-                  <button
-                    onClick={handleAddFolder}
-                    className="flex-1 md:flex-none px-3 py-2 bg-green-600 text-white rounded text-sm hover:bg-green-700 transition-colors"
-                  >
-                    {t(language, 'save')}
-                  </button>
-                  <button
-                    onClick={() => {
-                      setShowAddFolder(false);
-                      setNewFolderName('');
-                    }}
-                    className={`flex-1 md:flex-none px-3 py-2 rounded text-sm transition-colors ${
-                      darkMode ? 'bg-gray-700 text-gray-300 hover:bg-gray-600' : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
-                    }`}
-                  >
-                    {t(language, 'cancel')}
-                  </button>
-                </div>
+                <button
+                  onClick={handleAddFolder}
+                  className="px-3 py-2 bg-green-600 text-white rounded text-sm hover:bg-green-700 transition-colors"
+                >
+                  {t(language, 'save')}
+                </button>
+                <button
+                  onClick={() => {
+                    setShowAddFolder(false);
+                    setNewFolderName('');
+                  }}
+                  className={`px-3 py-2 rounded text-sm transition-colors ${
+                    darkMode ? 'bg-gray-700 text-gray-300 hover:bg-gray-600' : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                  }`}
+                >
+                  {t(language, 'cancel')}
+                </button>
               </div>
             </div>
           )}

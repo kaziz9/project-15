@@ -38,6 +38,12 @@ export const AddLinkModal: React.FC<AddLinkModalProps> = ({
   const [showNewFolderInput, setShowNewFolderInput] = useState(false);
   const [newFolderName, setNewFolderName] = useState('');
 
+  const getDefaultFolder = () => {
+    if (currentView && availableFolders.includes(currentView)) {
+      return currentView;
+    }
+    return availableFolders[0] || 'Work';
+  };
 
   const normalizeUrl = (inputUrl: string): string => {
     if (!inputUrl) return '';
@@ -54,19 +60,6 @@ export const AddLinkModal: React.FC<AddLinkModalProps> = ({
     return `https://${cleanUrl}`;
   };
 
-  const getDefaultFolder = (): string => {
-    // If currently viewing a specific folder, use that folder
-    if (currentView.startsWith('folder:')) {
-      const folderName = currentView.split(':')[1];
-      if (availableFolders.includes(folderName)) {
-        return folderName;
-      }
-    }
-    
-    // Otherwise, use the first available folder or 'Work' as fallback
-    return availableFolders.length > 0 ? availableFolders[0] : 'Work';
-  };
-
   useEffect(() => {
     if (!isOpen) {
       setUrl('');
@@ -80,7 +73,7 @@ export const AddLinkModal: React.FC<AddLinkModalProps> = ({
       // Set folder based on current view
       setFolder(getDefaultFolder());
     }
-  }, [isOpen, availableFolders, currentView]);
+  }, [isOpen, currentView, availableFolders]);
 
   const fetchPreview = async () => {
     if (!url) return;

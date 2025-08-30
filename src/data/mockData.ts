@@ -165,6 +165,19 @@ export const mockLinks: Link[] = [
     createdAt: new Date('2024-01-17')
   },
 
+  {
+    id: '15',
+    url: 'https://chatgpt.com/',
+    title: 'ChatGPT',
+    description: 'مساعد ذكي للمحادثة والإجابة على الأسئلة',
+    image: 'https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=800',
+    folder: 'Personal',
+    tags: ['AI', 'chat', 'assistant', 'questions'],
+    isFavorite: true,
+    readLater: false,
+    createdAt: new Date('2024-01-15')
+  },
+
   // Original MyWaslat link
   {
     id: '14',

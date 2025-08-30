@@ -154,6 +154,20 @@ export const mockLinks: Link[] = [
   // Original MyWaslat link
   {
     id: '13',
+    url: 'https://mail.google.com/',
+    title: 'Gmail',
+    description: 'خدمة البريد الإلكتروني من جوجل',
+    image: 'https://images.pexels.com/photos/4439901/pexels-photo-4439901.jpeg?auto=compress&cs=tinysrgb&w=800',
+    folder: 'Personal',
+    tags: ['email', 'google', 'communication'],
+    isFavorite: true,
+    readLater: false,
+    createdAt: new Date('2024-01-17')
+  },
+
+  // Original MyWaslat link
+  {
+    id: '14',
     url: 'http://mywaslat.com/',
     title: 'MyWaslat',
     description: 'تطبيق MyWaslat هو منصة ذكية مصممة لمساعدتك في حفظ وتنظيم روابطك. يتيح لك جمع أنواع مختلفة من الروابط، مثل المقالات ومقاطع الفيديو والأدوات أو الأبحاث، في مكان واحد آمن وسهل الاستخدام.',

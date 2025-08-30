@@ -39,9 +39,14 @@ export const AddLinkModal: React.FC<AddLinkModalProps> = ({
   const [newFolderName, setNewFolderName] = useState('');
 
   const getDefaultFolder = () => {
-    if (currentView && availableFolders.includes(currentView)) {
-      return currentView;
+    // إذا كان العرض الحالي هو مجلد معين
+    if (currentView.startsWith('folder:')) {
+      const folderName = currentView.split(':')[1];
+      if (availableFolders.includes(folderName)) {
+        return folderName;
+      }
     }
+    // إذا كان في عرض عام، اختر أول مجلد متاح
     return availableFolders[0] || 'Work';
   };
 
@@ -66,7 +71,6 @@ export const AddLinkModal: React.FC<AddLinkModalProps> = ({
       setTitle('');
       setDescription('');
       setImage('');
-      setFolder(getDefaultFolder());
       setTags([]);
       setNewTag('');
     } else {

@@ -2,6 +2,26 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Background Image */
+body {
+  background-image: url('/612b065b-d527-44d1-8201-f7e462389c15.jpeg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+}
+
+/* Overlay for better readability */
+#root {
+  background-color: rgba(255, 255, 255, 0.95);
+  min-height: 100vh;
+}
+
+/* Dark mode overlay */
+.dark-overlay {
+  background-color: rgba(17, 24, 39, 0.95) !important;
+}
+
 /* Custom Scrollbar Styles */
 @layer utilities {
   /* Webkit Scrollbar */

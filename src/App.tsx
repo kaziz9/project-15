@@ -516,7 +516,7 @@ function App() {
       onOpenAbout={() => setIsAboutModalOpen(true)}
       onOpenDataManagement={() => setIsDataManagementModalOpen(true)}
     >
-      <div className="flex h-[calc(100vh-4rem)] md:h-[calc(100vh-5rem)]">
+      <div className={`flex h-[calc(100vh-4rem)] md:h-[calc(100vh-5rem)] ${darkMode ? 'dark-overlay' : ''}`}>
         <Sidebar
           darkMode={darkMode}
           currentView={currentView}

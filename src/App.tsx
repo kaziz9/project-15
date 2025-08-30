@@ -534,7 +534,25 @@ function App() {
         />
 
         <div className="flex-1 overflow-hidden w-full md:w-auto">
-          <div className="p-3 sm:p-4 md:p-6 lg:p-8 h-full overflow-y-auto bg-inherit">
+          <div 
+            className="p-3 sm:p-4 md:p-6 lg:p-8 h-full overflow-y-auto relative"
+            style={{
+              backgroundImage: 'url(/612b065b-d527-44d1-8201-f7e462389c15.jpeg)',
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              backgroundRepeat: 'no-repeat',
+              backgroundAttachment: 'local'
+            }}
+          >
+            {/* Overlay for better content readability */}
+            <div className={`absolute inset-0 ${
+              darkMode 
+                ? 'bg-gray-900 bg-opacity-85' 
+                : 'bg-white bg-opacity-90'
+            }`}></div>
+            
+            {/* Content wrapper */}
+            <div className="relative z-10">
             <div className="flex items-center justify-between mb-8">
               <div>
                 <h1 className={`text-lg sm:text-xl md:text-2xl font-bold mb-1 md:mb-2 ${
@@ -726,24 +744,7 @@ function App() {
             </div>
 
             {filteredLinks.length === 0 ? (
-              <div 
-                className="text-center py-12 md:py-16 relative min-h-[400px] rounded-xl overflow-hidden"
-                style={{
-                  backgroundImage: 'url(/612b065b-d527-44d1-8201-f7e462389c15.jpeg)',
-                  backgroundSize: 'cover',
-                  backgroundPosition: 'center',
-                  backgroundRepeat: 'no-repeat'
-                }}
-              >
-                {/* Overlay for better text readability */}
-                <div className={`absolute inset-0 ${
-                  darkMode 
-                    ? 'bg-gray-900 bg-opacity-80' 
-                    : 'bg-white bg-opacity-85'
-                }`}></div>
-                
-                {/* Content */}
-                <div className="relative z-10">
+              <div className="text-center py-12 md:py-16 min-h-[400px]">
                 <div className="mb-6">
                   <img 
                     src="/logo3.png" 
@@ -759,7 +760,6 @@ function App() {
                 <p className={`text-sm md:text-base ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>
                   {searchTerm ? t(language, 'noLinksFound') : currentView === 'trash' ? '' : t(language, 'startAddingLinks')}
                 </p>
-                </div>
               </div>
             ) : (
               <div className={`${
@@ -790,6 +790,7 @@ function App() {
                 ))}
               </div>
             )}
+            </div>
           </div>
         </div>
       </div>

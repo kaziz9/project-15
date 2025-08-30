@@ -12,6 +12,7 @@ interface AddLinkModalProps {
   language: 'ar' | 'en';
   availableFolders: string[];
   allTags: string[];
+  currentView: string;
 }
 
 export const AddLinkModal: React.FC<AddLinkModalProps> = ({
@@ -22,7 +23,8 @@ export const AddLinkModal: React.FC<AddLinkModalProps> = ({
   darkMode,
   language,
   availableFolders,
-  allTags
+  allTags,
+  currentView
 }) => {
   const [url, setUrl] = useState('');
   const [title, setTitle] = useState('');
@@ -58,16 +60,13 @@ export const AddLinkModal: React.FC<AddLinkModalProps> = ({
       setTitle('');
       setDescription('');
       setImage('');
-      setFolder('Work');
+      setFolder(getDefaultFolder());
       setTags([]);
       setNewTag('');
     } else {
-      // Set default folder to first available folder
-      if (availableFolders.length > 0) {
-        setFolder(availableFolders[0]);
-      }
+      // Set folder based on current view
+      setFolder(getDefaultFolder());
     }
-  }, [isOpen, availableFolders]);
 
   const fetchPreview = async () => {
     if (!url) return;

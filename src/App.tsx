@@ -510,6 +510,7 @@ function App() {
       language={language}
       onToggleLanguage={() => setLanguage(prev => prev === 'ar' ? 'en' : 'ar')}
       searchTerm={searchTerm}
+      currentView={currentView}
       onSearchChange={setSearchTerm}
       isSidebarOpen={isSidebarOpen}
       onToggleSidebar={() => setIsSidebarOpen(!isSidebarOpen)}

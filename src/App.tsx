@@ -813,6 +813,7 @@ function App() {
         onAddFolder={handleAddFolder}
         darkMode={darkMode}
         language={language}
+        currentView={currentView}
         availableFolders={folders}
         allTags={allTags}
       />

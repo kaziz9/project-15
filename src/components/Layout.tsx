@@ -61,7 +61,7 @@ export function Layout({
               
               <div className="flex items-center space-x-2 sm:space-x-3">
                 <img 
-                  src="/logo3.png" 
+                  src="/Generated Image August 30, 2025 - 5_02PM.jpeg" 
                   alt="MyWaslat Logo" 
                   className="w-9 h-9 sm:w-11 sm:h-11 rounded-full object-cover border-2 border-blue-500 hover:border-blue-600 transition-all duration-300 hover:scale-110 hover:rotate-12 cursor-pointer shadow-md hover:shadow-lg"
                 />

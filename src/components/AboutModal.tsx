@@ -73,7 +73,7 @@ export const AboutModal: React.FC<AboutModalProps> = ({
         <div className="sticky top-0 flex items-center justify-between p-6 border-b bg-inherit rounded-t-xl">
           <div className="flex items-center space-x-3">
             <img 
-              src="/logo3.png" 
+              src="/Generated Image August 30, 2025 - 5_02PM.jpeg" 
               alt="MyWaslat Logo" 
               className="w-10 h-10 rounded-full object-cover border-2 border-blue-500"
             />

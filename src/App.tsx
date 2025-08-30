@@ -491,7 +491,7 @@ function App() {
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="text-center">
           <img 
-            src="/logo3.png" 
+            src="/Generated Image August 30, 2025 - 5_02PM.jpeg" 
             alt="MyWaslat Logo" 
             className="w-12 h-12 rounded-full object-cover border-2 border-blue-500 mb-4 mx-auto animate-pulse shadow-lg"
           />
@@ -747,7 +747,7 @@ function App() {
               <div className="text-center py-12 md:py-16 min-h-[400px]">
                 <div className="mb-6">
                   <img 
-                    src="/logo3.png" 
+                    src="/Generated Image August 30, 2025 - 5_02PM.jpeg" 
                     alt="MyWaslat Logo" 
                     className="w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 rounded-full object-cover border-4 border-blue-500 mx-auto shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 hover:rotate-12"
                   />

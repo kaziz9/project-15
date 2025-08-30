@@ -134,7 +134,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
         <div className="md:hidden flex justify-between items-center p-4 border-b border-gray-200 dark:border-gray-700">
           <div className="flex items-center space-x-2">
             <img 
-              src="/logo3.png" 
+              src="/Generated Image August 30, 2025 - 5_02PM.jpeg" 
               alt="MyWaslat Logo" 
               className="w-8 h-8 rounded-full object-cover border-2 border-blue-500"
             />

@@ -107,7 +107,7 @@ export const mockLinks: Link[] = [
     url: 'https://www.reddit.com/',
     title: 'Reddit',
     description: 'مجتمعات للنقاش والميمز وكل شيء',
-    image: 'https://images.pexels.com/photos/267350/pexels-photo-267350.jpeg?auto=compress&cs=tinysrgb&w=800',
+    image: 'https://images.pexels.com/photos/1181467/pexels-photo-1181467.jpeg?auto=compress&cs=tinysrgb&w=800',
     folder: 'Fun',
     tags: ['community', 'discussion', 'memes'],
     isFavorite: false,

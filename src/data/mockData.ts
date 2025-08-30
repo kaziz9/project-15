@@ -115,18 +115,6 @@ export const mockLinks: Link[] = [
     createdAt: new Date('2024-01-12')
   },
   {
-    id: '10',
-    url: 'https://www.youtube.com/',
-    title: 'YouTube',
-    description: 'فيديوهات تعليمية وترفيهية',
-    image: 'https://images.pexels.com/photos/1591056/pexels-photo-1591056.jpeg?auto=compress&cs=tinysrgb&w=800',
-    folder: 'Fun',
-    tags: ['videos', 'entertainment', 'education'],
-    isFavorite: true,
-    readLater: false,
-    createdAt: new Date('2024-01-11')
-  },
-  {
     id: '11',
     url: 'https://9gag.com/',
     title: '9GAG',

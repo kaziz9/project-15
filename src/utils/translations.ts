@@ -103,6 +103,12 @@ export const translations = {
     // Copyright
     copyright: 'جميع الحقوق محفوظة © MyWaslat [2025]',
 
+    // Share
+    shareApp: 'مشاركة التطبيق',
+    shareText: 'اكتشف MyWaslat - تطبيق ذكي لحفظ وتنظيم جميع روابطك في مكان واحد آمن وسهل الاستخدام!',
+    appInfoCopied: 'تم نسخ معلومات التطبيق إلى الحافظة!',
+    appLinkCopied: 'تم نسخ رابط التطبيق إلى الحافظة!',
+
     // Folders
     work: 'العمل',
     study: 'الدراسة',
@@ -293,6 +299,12 @@ export const translations = {
 
     // Copyright
     copyright: 'All rights reserved © MyWaslat [2025]',
+
+    // Share
+    shareApp: 'Share App',
+    shareText: 'Discover MyWaslat - A smart app to save and organize all your links in one safe and easy place!',
+    appInfoCopied: 'App information copied to clipboard!',
+    appLinkCopied: 'App link copied to clipboard!',
 
     // Share
     shareApp: 'Share App',
